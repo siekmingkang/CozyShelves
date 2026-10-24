@@ -1,0 +1,192 @@
+.cat {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: cat-breathe var(--cat-breathe, 4.4s) ease-in-out infinite;
+}
+
+.cat-tail {
+  transform-box: fill-box;
+  transform-origin: 30% 0%;
+  animation: cat-tail-sway var(--cat-tail, 7s) ease-in-out infinite;
+}
+
+.cat-head {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+}
+
+.cat-ear {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: cat-ear-twitch var(--cat-ear-left, 8.5s) ease-in-out infinite;
+}
+
+.cat-ear--right {
+  animation-duration: var(--cat-ear-right, 10s);
+  animation-delay: 0.8s;
+}
+
+.cat-whiskers {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  animation: cat-whisker-twitch var(--cat-whisker, 6.5s) ease-in-out infinite;
+}
+
+.cat-open-eyes,
+.cat-eye-shut {
+  animation-duration: var(--cat-peek, 11s);
+  animation-delay: var(--cat-peek-delay, 3s);
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+.cat-open-eyes {
+  opacity: 0;
+  animation-name: cat-peek;
+}
+
+.cat-eye-shut {
+  animation-name: cat-hide;
+}
+
+.cat--honey {
+  --cat-breathe: 4.4s;
+  --cat-tail: 7s;
+  --cat-ear-left: 8.5s;
+  --cat-ear-right: 10s;
+  --cat-whisker: 6.5s;
+  --cat-peek: 11s;
+  --cat-peek-delay: 3s;
+}
+
+.cat--biscuit {
+  --cat-breathe: 5.2s;
+  --cat-tail: 9s;
+  --cat-ear-left: 10s;
+  --cat-ear-right: 7.6s;
+  --cat-whisker: 8s;
+  --cat-peek: 13s;
+  --cat-peek-delay: 6.5s;
+}
+
+.cat--marmalade {
+  --cat-breathe: 3.8s;
+  --cat-tail: 5.2s;
+  --cat-ear-left: 6.4s;
+  --cat-ear-right: 8.2s;
+  --cat-whisker: 5.6s;
+  --cat-peek: 8.4s;
+  --cat-peek-delay: 1.8s;
+}
+
+.cat--toffee {
+  --cat-breathe: 5.6s;
+  --cat-tail: 8.4s;
+  --cat-ear-left: 9.4s;
+  --cat-ear-right: 11s;
+  --cat-whisker: 7.4s;
+  --cat-peek: 14s;
+  --cat-peek-delay: 8s;
+}
+
+.cat--butterscotch {
+  --cat-breathe: 4.8s;
+  --cat-tail: 7.4s;
+  --cat-ear-left: 7.2s;
+  --cat-ear-right: 9.8s;
+  --cat-whisker: 6.2s;
+  --cat-peek: 12s;
+  --cat-peek-delay: 4.2s;
+}
+
+.cat--butterscotch .cat-head {
+  animation: cat-head-tilt 9s ease-in-out infinite;
+}
+
+@keyframes cat-breathe {
+  0%,
+  100% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.012, 1.028);
+  }
+}
+
+@keyframes cat-tail-sway {
+  0%,
+  100% {
+    transform: rotate(-1.2deg);
+  }
+  50% {
+    transform: rotate(1.4deg);
+  }
+}
+
+@keyframes cat-ear-twitch {
+  0%,
+  86%,
+  100% {
+    transform: rotate(0);
+  }
+  89% {
+    transform: rotate(-8deg);
+  }
+  92% {
+    transform: rotate(4deg);
+  }
+  95% {
+    transform: rotate(-2deg);
+  }
+}
+
+@keyframes cat-whisker-twitch {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  50% {
+    transform: rotate(1.1deg);
+  }
+}
+
+@keyframes cat-head-tilt {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  50% {
+    transform: rotate(-2.2deg);
+  }
+}
+
+@keyframes cat-peek {
+  0%,
+  86%,
+  100% {
+    opacity: 0;
+  }
+  89%,
+  96% {
+    opacity: 1;
+  }
+}
+
+@keyframes cat-hide {
+  0%,
+  86%,
+  100% {
+    opacity: 1;
+  }
+  89%,
+  96% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cat,
+  .cat * {
+    animation: none !important;
+  }
+}
