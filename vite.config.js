@@ -4,6 +4,7 @@ import { fileURLToPath } from "node:url";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
+const base = process.env.BASE_PATH || "/";
 const booksDir = fileURLToPath(new URL("./public/Books", import.meta.url));
 const virtualBooks = "virtual:books";
 const resolvedBooks = "\0" + virtualBooks;
@@ -42,8 +43,7 @@ function scanBooks() {
       }
 
       const asset = (...parts) =>
-        "/" +
-        ["Books", entry.name, ...parts].map(encodeURIComponent).join("/");
+        base + ["Books", entry.name, ...parts].map(encodeURIComponent).join("/");
 
       return [
         {
@@ -93,5 +93,6 @@ function booksManifest() {
 }
 
 export default defineConfig({
+  base,
   plugins: [react(), booksManifest()],
 });
